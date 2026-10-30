@@ -3,3 +3,14 @@ Groq-powered chatbot. See DEPLOY_VERCEL.md to publish it.
 
 Local run: Python 3.10+ and Node 18+. Put your key in `.env`, then run `run.bat` (Windows) or `./run.sh`
 and open http://localhost:5173.
+
+## Local Development Checklist
+
+- Keep the Groq API key in a local environment file and ensure that file is excluded from Git.
+- Verify the Python and Node.js versions required by the project before starting the local scripts.
+- Test the chat interface with empty input, long prompts, and API errors.
+- Handle rate limits and provider failures with a clear user-facing message rather than exposing secrets or raw stack traces.
+
+## Deployment Safety
+
+Configure secrets through the deployment platform's environment-variable settings. Do not place API keys in browser-side code or commit real credentials to the repository.
