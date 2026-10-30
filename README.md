@@ -20,3 +20,9 @@ Configure secrets through the deployment platform's environment-variable setting
 Document the exact frontend/backend stack, environment variables, and Vercel deployment settings. Keep Gemini credentials server-side and protect public endpoints against quota abuse.
 
 For reproducibility, record source versions, environment and dependency versions, configuration, and actual test outputs. Clearly label sample data and illustrative results; never commit secrets or private data.
+
+### Technical Deep Dive
+
+The application separates a browser-facing chat interface from a Python service and a Groq-backed response path. Keep provider credentials exclusively on the server, validate request payload size and message structure, and handle provider timeouts, rate limits, and malformed responses without returning secrets or raw stack traces to the client.
+
+Suggested engineering checks: add per-session conversation limits, rate limiting for public endpoints, safe Markdown rendering, and tests for missing configuration and upstream API failures. Verify the deployed environment variables independently from local `.env` settings.
