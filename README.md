@@ -14,3 +14,9 @@ and open http://localhost:5173.
 ## Deployment Safety
 
 Configure secrets through the deployment platform's environment-variable settings. Do not place API keys in browser-side code or commit real credentials to the repository.
+
+## Project Development Notes
+
+Document the exact frontend/backend stack, environment variables, and Vercel deployment settings. Keep Gemini credentials server-side and protect public endpoints against quota abuse.
+
+For reproducibility, record source versions, environment and dependency versions, configuration, and actual test outputs. Clearly label sample data and illustrative results; never commit secrets or private data.
