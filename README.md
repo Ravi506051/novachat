@@ -34,3 +34,11 @@ Suggested engineering checks: add per-session conversation limits, rate limiting
 - Handle missing configuration, provider timeouts, rate limits, and malformed responses with safe user-facing errors.
 - Test empty messages, long prompts, concurrent sessions, and unavailable upstream services.
 - Document the actual frontend/backend entry points and deployment configuration used by this repository.
+
+## Conversational Application Considerations
+
+- Keep the user interface, conversation orchestration, model provider, and persistence layer loosely coupled.
+- Make model configuration and API endpoints explicit so providers can be changed without rewriting application logic.
+- Handle rate limits, network failures, empty responses, and context-length limits gracefully.
+- Protect credentials and consider privacy before storing conversation history.
+- Evaluate response quality with representative prompts and track latency, token usage, and failure rates.
