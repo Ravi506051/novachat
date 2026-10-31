@@ -26,3 +26,11 @@ For reproducibility, record source versions, environment and dependency versions
 The application separates a browser-facing chat interface from a Python service and a Groq-backed response path. Keep provider credentials exclusively on the server, validate request payload size and message structure, and handle provider timeouts, rate limits, and malformed responses without returning secrets or raw stack traces to the client.
 
 Suggested engineering checks: add per-session conversation limits, rate limiting for public endpoints, safe Markdown rendering, and tests for missing configuration and upstream API failures. Verify the deployed environment variables independently from local `.env` settings.
+
+## Deployment and Reliability Checklist
+
+- Keep the Groq API key in server-side environment variables; never expose it in browser code or commit .env files.
+- Validate request payloads and impose sensible message-size, session, and rate limits for public deployments.
+- Handle missing configuration, provider timeouts, rate limits, and malformed responses with safe user-facing errors.
+- Test empty messages, long prompts, concurrent sessions, and unavailable upstream services.
+- Document the actual frontend/backend entry points and deployment configuration used by this repository.
