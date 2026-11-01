@@ -42,3 +42,10 @@ Suggested engineering checks: add per-session conversation limits, rate limiting
 - Handle rate limits, network failures, empty responses, and context-length limits gracefully.
 - Protect credentials and consider privacy before storing conversation history.
 - Evaluate response quality with representative prompts and track latency, token usage, and failure rates.
+
+## Reliability and API Integration Checks
+
+- Keep the Groq credential exclusively on the server and load it from environment variables or deployment secrets.
+- Validate message size and request structure, and handle missing keys, provider timeouts, rate limits, and malformed responses gracefully.
+- Add rate limiting and session controls before exposing a public endpoint to prevent accidental quota exhaustion.
+- Render model-generated Markdown safely and avoid logging private conversation content.
