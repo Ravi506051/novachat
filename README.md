@@ -1,51 +1,30 @@
-# Nova Chat (Vercel edition)
-Groq-powered chatbot. See DEPLOY_VERCEL.md to publish it.
+# Nova Chat
 
-Local run: Python 3.10+ and Node 18+. Put your key in `.env`, then run `run.bat` (Windows) or `./run.sh`
-and open http://localhost:5173.
+A web-based conversational AI application with a browser interface and a server-side language-model integration. The repository documentation describes a Groq-powered configuration and local development scripts.
 
-## Local Development Checklist
+## Features and workflow
+- Chat-style user interface
+- Server-side request handling
+- LLM-generated responses through the configured provider
+- Local development scripts for Windows and Unix-like systems
+- Deployment configuration documented in the repository
 
-- Keep the Groq API key in a local environment file and ensure that file is excluded from Git.
-- Verify the Python and Node.js versions required by the project before starting the local scripts.
-- Test the chat interface with empty input, long prompts, and API errors.
-- Handle rate limits and provider failures with a clear user-facing message rather than exposing secrets or raw stack traces.
+## Technology
+Python · JavaScript · Node.js · Groq API
 
-## Deployment Safety
+## Run locally
+Requirements: Python 3.10+ and Node.js 18+.
+```bash
+git clone https://github.com/Ravi506051/novachat.git
+cd novachat
+```
+Create a local `.env` file with the provider key expected by the backend. Then run `run.bat` on Windows or `./run.sh` on macOS/Linux, as described by the project.
 
-Configure secrets through the deployment platform's environment-variable settings. Do not place API keys in browser-side code or commit real credentials to the repository.
+## Security
+Keep provider keys on the server and exclude `.env` from Git. Add rate limits to public endpoints, handle provider errors safely and never expose secrets in browser code or logs.
 
-## Project Development Notes
+## Future improvements
+Add conversation persistence, configurable model selection, request validation, usage monitoring and automated interface tests.
 
-Document the exact frontend/backend stack, environment variables, and Vercel deployment settings. Keep Gemini credentials server-side and protect public endpoints against quota abuse.
-
-For reproducibility, record source versions, environment and dependency versions, configuration, and actual test outputs. Clearly label sample data and illustrative results; never commit secrets or private data.
-
-### Technical Deep Dive
-
-The application separates a browser-facing chat interface from a Python service and a Groq-backed response path. Keep provider credentials exclusively on the server, validate request payload size and message structure, and handle provider timeouts, rate limits, and malformed responses without returning secrets or raw stack traces to the client.
-
-Suggested engineering checks: add per-session conversation limits, rate limiting for public endpoints, safe Markdown rendering, and tests for missing configuration and upstream API failures. Verify the deployed environment variables independently from local `.env` settings.
-
-## Deployment and Reliability Checklist
-
-- Keep the Groq API key in server-side environment variables; never expose it in browser code or commit .env files.
-- Validate request payloads and impose sensible message-size, session, and rate limits for public deployments.
-- Handle missing configuration, provider timeouts, rate limits, and malformed responses with safe user-facing errors.
-- Test empty messages, long prompts, concurrent sessions, and unavailable upstream services.
-- Document the actual frontend/backend entry points and deployment configuration used by this repository.
-
-## Conversational Application Considerations
-
-- Keep the user interface, conversation orchestration, model provider, and persistence layer loosely coupled.
-- Make model configuration and API endpoints explicit so providers can be changed without rewriting application logic.
-- Handle rate limits, network failures, empty responses, and context-length limits gracefully.
-- Protect credentials and consider privacy before storing conversation history.
-- Evaluate response quality with representative prompts and track latency, token usage, and failure rates.
-
-## Reliability and API Integration Checks
-
-- Keep the Groq credential exclusively on the server and load it from environment variables or deployment secrets.
-- Validate message size and request structure, and handle missing keys, provider timeouts, rate limits, and malformed responses gracefully.
-- Add rate limiting and session controls before exposing a public endpoint to prevent accidental quota exhaustion.
-- Render model-generated Markdown safely and avoid logging private conversation content.
+## Maintainer
+**Ravi Kumar Rao** · [GitHub](https://github.com/Ravi506051)
